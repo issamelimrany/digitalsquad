@@ -1,16 +1,21 @@
 RewriteEngine on
-RewriteCond %{REQUEST_URI} ^/sous-route/?(.*)$
+
+# Redirection de /tva/ vers https://calcul-comptable.vercel.app/
+RewriteCond %{REQUEST_URI} ^/tva/?(.*)$
 RewriteRule ^tva/(.*)$ https://calcul-comptable.vercel.app/$1 [P,L]
+
+# Les lignes suivantes sont liées à la gestion des requêtes vers index.php, et à la mise en cache des fichiers statiques.
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . index.php [L]
+
 <IfModule mod_headers.c>
-    # WEEK
+    # Mise en cache d'une semaine pour les images
     <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
         Header set Cache-Control "max-age=31536000, public"
     </FilesMatch>
 
-    # WEEK
+    # Mise en cache d'une semaine pour les fichiers JS, CSS, SWF
     <FilesMatch "\.(js|css|swf)$">
         Header set Cache-Control "max-age=31536000"
     </FilesMatch>
