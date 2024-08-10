@@ -1,4 +1,6 @@
 RewriteEngine on
+RewriteCond %{REQUEST_URI} ^/sous-route/?(.*)$
+RewriteRule ^tva/(.*)$ https://calcul-comptable.vercel.app/$1 [P,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . index.php [L]
