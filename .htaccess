@@ -1,8 +1,7 @@
 RewriteEngine on
 
 # Redirection de /tva/ vers https://calcul-comptable.vercel.app/
-RewriteCond %{REQUEST_URI} ^/tva/?(.*)$
-RewriteRule ^tva/(.*)$ https://calcul-comptable.vercel.app/$1 [P,L]
+RewriteRule ^tva$ https://calcul-comptable.vercel.app/$1 [P,L]
 
 # Les lignes suivantes sont liées à la gestion des requêtes vers index.php, et à la mise en cache des fichiers statiques.
 RewriteCond %{REQUEST_FILENAME} !-d
